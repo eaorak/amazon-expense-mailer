@@ -1,0 +1,7 @@
+# Rename this to .env and fill in required info
+AMAZON_EMAIL=amazon@account.mail
+AMAZON_PASSWORD=password
+EMAIL_SERVER=smtp.gmail.com
+EMAIL_ADDRESS=email@account.address
+EMAIL_PASSWORD=password
+SEND_TO=comma@separated.list,of@mail.addresses
