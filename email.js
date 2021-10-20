@@ -3,7 +3,7 @@ const nodemailer = require('nodemailer')
 
 dotenv.config()
 
-const sendInvoice = (subject, content, filePaths = []) => {
+const sendInvoice = (filePaths = [], subject='Expense Invoice', content='Thanks.') => {
   const transporter = nodemailer.createTransport({
     host: process.env.EMAIL_SERVER,
     auth: {
@@ -15,7 +15,7 @@ const sendInvoice = (subject, content, filePaths = []) => {
   const mailOptions = {
     from: process.env.EMAIL_ADDRESS,
     to: process.env.SEND_TO,
-    subject: subject || 'Lambda test email',
+    subject: subject,
     html: content,
     attachments: filePaths.map(file => ({filename: file.split('/').pop(), path: file}))
   }

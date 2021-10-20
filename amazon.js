@@ -1,21 +1,22 @@
 /**
- * @name Amazon search
- *
- * @desc Looks for a "nyan cat pullover" on amazon.com, goes two page two clicks the third one.
+ * Login to Amazon store, go to orders, download last summary and email to list of recipients.
+ * Hard work :)
  */
 const puppeteer = require('puppeteer')
 const dotenv = require('dotenv')
 const sendInvoice = require('./email')
 
+const AMAZON_STORE = 'https://www.amazon.co.uk'
 const INVOICE_PATH = './invoice.pdf'
+const PUPPETEER_CONFIG = {headless: true}
 
 try {
   (async () => {
     dotenv.config()
-    const browser = await puppeteer.launch({headless: true})
+    const browser = await puppeteer.launch(PUPPETEER_CONFIG)
     const page = await browser.newPage()
     await page.setViewport({ width: 1280, height: 800 })
-    await page.goto('https://www.amazon.co.uk')
+    await page.goto(AMAZON_STORE)
     try {
       await page.click('#sp-cc-accept')
     } catch (err) {}
@@ -62,9 +63,9 @@ try {
     
     // Sending invoice
     console.log('Sending invoice..')
-    await sendInvoice('Expense invoice', 'Thanks.', [INVOICE_PATH])
+    await sendInvoice([INVOICE_PATH])
 
   })()
 } catch (err) {
-  console.error(err)
+  console.error('Error occured: ', err)
 }
