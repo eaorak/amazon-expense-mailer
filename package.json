@@ -4,7 +4,8 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "start": "node amazon.js"
+    "start": "node src/amazon.js",
+    "mail": "node src/sendEmail.js"
   },
   "dependencies": {
     "dotenv": "^10.0.0",

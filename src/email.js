@@ -3,10 +3,6 @@ const nodemailer = require('nodemailer')
 
 dotenv.config()
 
-console.log(process.argv)
-
-const 
-
 const sendInvoice = (filePaths = [], subject='Expense Invoice', content='Thanks.') => {
   const transporter = nodemailer.createTransport({
     host: process.env.EMAIL_SERVER,
@@ -16,6 +12,8 @@ const sendInvoice = (filePaths = [], subject='Expense Invoice', content='Thanks.
     },
   })
 
+  console.log('Filepaths: ', filePaths)
+  
   const mailOptions = {
     from: process.env.EMAIL_ADDRESS,
     to: process.env.SEND_TO,

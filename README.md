@@ -24,6 +24,14 @@ Sending email to 'recipient@gmail.com' with subject 'Expense invoice'...
 ✨  Done in 20.42s.
 ```
 
+Alternatively a downloaded invoice can be sent by using `yarn mail`
+
+```
+$ yarn mail /full/path/to/invoice "Mail body" "Mail subject"
+```
+
+Body and subject are optional. By default they will be "Thanks." and "Expense Invoice".
+
 ## Configuration
 
 In order to run the project please fill in the information required in the `.env` file. You can rename the `_env` file within the project.
